@@ -1,6 +1,28 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import type { Note } from "./backend.d";
-import { useGetNotes, useInitializeAndGetDay } from "./hooks/useQueries";
+import { useGetNotes } from "./hooks/useQueries";
+
+// ──────────────────────────────────────────────
+// localStorage-based unlock logic
+// ──────────────────────────────────────────────
+const STORAGE_KEY = "loveNotesStartTime";
+const TOTAL_NOTES = 8;
+const MS_PER_DAY = 86400000;
+
+function getOrSetStartTime(): number {
+  const stored = localStorage.getItem(STORAGE_KEY);
+  if (stored) return Number.parseInt(stored, 10);
+  const now = Date.now();
+  localStorage.setItem(STORAGE_KEY, now.toString());
+  return now;
+}
+
+function computeCurrentDay(): number {
+  const startTime = getOrSetStartTime();
+  const elapsed = Date.now() - startTime;
+  const day = Math.floor(elapsed / MS_PER_DAY) + 1;
+  return Math.min(day, TOTAL_NOTES);
+}
 
 // ──────────────────────────────────────────────
 // Floating heart particle
@@ -506,13 +528,27 @@ function HeaderHearts() {
 // Main App
 // ──────────────────────────────────────────────
 export default function App() {
-  const dayQuery = useInitializeAndGetDay();
+  const [currentDay] = useState<number>(computeCurrentDay);
   const notesQuery = useGetNotes();
 
-  const currentDay = dayQuery.data ? Number(dayQuery.data) : 1;
-  const notes = notesQuery.data ?? [];
-  const isLoading = dayQuery.isLoading || notesQuery.isLoading;
-  const isError = dayQuery.isError || notesQuery.isError;
+  const rawNotes = notesQuery.data ?? [];
+  const isLoading = notesQuery.isLoading;
+  const isError = notesQuery.isError;
+
+  // Override isUnlocked from backend (backend has a bug returning all unlocked).
+  // Also blank out body for locked notes so nothing is revealed early.
+  const notes: Note[] = useMemo(
+    () =>
+      rawNotes.map((note, i) => {
+        const unlocked = i + 1 <= currentDay;
+        return {
+          ...note,
+          isUnlocked: unlocked,
+          body: unlocked ? note.body : "",
+        };
+      }),
+    [rawNotes, currentDay],
+  );
 
   return (
     <div className="min-h-screen relative flex flex-col">

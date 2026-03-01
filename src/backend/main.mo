@@ -1,9 +1,9 @@
 import Time "mo:core/Time";
 import Int "mo:core/Int";
 import Array "mo:core/Array";
-import Migration "migration";
 
-(with migration = Migration.run)
+
+
 actor {
   type Note = {
     title : Text;
