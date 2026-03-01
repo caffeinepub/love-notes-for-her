@@ -1,9 +1,9 @@
 import Time "mo:core/Time";
 import Int "mo:core/Int";
 import Array "mo:core/Array";
+import Migration "migration";
 
-
-
+(with migration = Migration.run)
 actor {
   type Note = {
     title : Text;
@@ -13,43 +13,43 @@ actor {
 
   let notes = [
     {
-      title = "Day 1 — Just For You, Aarna";
-      body = "Meri jaan, this is my little gift to you — eight notes, one for each day, each one wrapped in love. I just want you to know that you are deeply cared for, cherished, and loved beyond words. I'm right here, always. Open the next one tomorrow — I'll be waiting for you. 💕";
+      title = "Day 1 — HIEYEYEYEYEYEYEYEYEYEY my babyyyyy 🥰🥰🥰🥰🥰🥰🥰";
+      body = "HIEYEYEYEYEYEYEYEYEYEY my babyyyyy 🥰🥰🥰🥰🥰🥰🥰 hope you have a wonderful day ahead and pls take care of yourself, i love you so much 🥰";
       isUnlocked = true;
     },
     {
-      title = "Day 2 — I'm Always Here";
-      body = "My baby, no matter what you're going through — a hard day, a quiet moment, a storm in your heart — I'm here. You don't have to face anything alone. Whenever you need me, I'll show up. Always. You are never, ever alone, Aarna. 🌸";
+      title = "Day 2 — I love you dhuniya me sabse sabseee zada";
+      body = "i love you to the moon and back and i love you dhuniya me sabse sabseee zada so pls take care of yourself today and hoping you have a bomb day ahead 😘";
       isUnlocked = false;
     },
     {
-      title = "Day 3 — You Make Everything Beautiful";
-      body = "Aarna, your smile — god, your smile. It does something to my heart every single time. You make ordinary moments feel like magic. Just by being you, you make the world more beautiful, and I am so lucky I get to see it. 💖";
+      title = "Day 3 — I bet you im missing you rn";
+      body = "i bet you im missing you rn and probably overthinking on smth stupid because i just cant help myself 👅 aaj aapne kitne killo hagga? 🤣";
       isUnlocked = false;
     },
     {
-      title = "Day 4 — You Matter So Much";
-      body = "Meri jaan, I need you to hear this: you matter. To me, more than I can ever put into words. Your feelings matter. Your dreams matter. You matter. I see you, I appreciate you, and I am so grateful you are in my life. 💝";
+      title = "Day 4 — HAAPPPYYYY HOLIIII MERI JAAANNNNNN 🥰🥰🥰🥰🥰";
+      body = "HAAPPPYYYY HOLIIII MERI JAAANNNNNN 🥰🥰🥰🥰🥰 i wish we could play holi together but IM GONNA SPEND THE REST OF MY LIFE WITH YOU SO WE WILL BABY 🥰";
       isUnlocked = false;
     },
     {
-      title = "Day 5 — Together, Always";
-      body = "My love, I think about all the little moments with you and my heart feels so full. Whatever life brings — the good days, the messy ones, the in-between ones — I want to be right there with you. You and me, Aarna. Always. 🌹";
+      title = "Day 5 — That sexy fucking body 🤤";
+      body = "really hope that you cleansed yourself properly and that gorgeous body too 🤤 and TAKE CARE OF THAT GORGEOUS FACE I HOPE THERES NO PAKKA RANG REMAINING 😭";
       isUnlocked = false;
     },
     {
-      title = "Day 6 — I See Your Strength";
-      body = "Baby, you are so much stronger than you know. I see the way you carry things, the way you keep going even when it's hard. You inspire me every single day. I'm proud of you — not just for what you do, but for who you are. 💗";
+      title = "Day 6 — Wishing you a banger day today";
+      body = "i hope for you to have a banger day today and wish you best of lucks for jheling my saala 🤭, and dont think abt me while reading this cause mai mara hua hunga (sst exam)";
       isUnlocked = false;
     },
     {
-      title = "Day 7 — Every Moment With You";
-      body = "Meri jaan, I treasure every memory we've made — every laugh, every quiet moment, every little thing. Thank you for trusting me, for letting me in. I hold all of it so close to my heart. You are my favourite person, Aarna. ✨";
+      title = "Day 7 — MERA EXAM KHATAM HOGAAYAYAYAY YAAAYYYYYYY 🥰🥰🥰🥰";
+      body = "MERA EXAM KHATAM HOGAAYAYAYAY YAAAYYYYYYY 🥰🥰🥰🥰 i love you so much my baby def more than you 😘";
       isUnlocked = false;
     },
     {
-      title = "Day 8 — Forever and Always";
-      body = "Aarna, my love for you doesn't have an expiry date. It grows every single day, quietly and surely. I care about you so deeply — your happiness, your peace, your heart. I'm here for all of it. With all my love, forever. 💕";
+      title = "Day 8 — FINALLY YOUR BROTHER GONE CALL ME TONIGHT BB 😘😘";
+      body = "FINALLY YOUR BROTHER GONE CALL ME TONIGHT BB 😘😘";
       isUnlocked = false;
     },
   ];
